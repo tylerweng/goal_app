@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+gem 'annotate'
+gem 'bcrypt'
 gem 'rspec'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
@@ -39,6 +40,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'faker'
   gem 'capybara'
   gem 'guard-rspec'

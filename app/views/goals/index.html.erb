@@ -1,0 +1,9 @@
+<h1><%= current_user.username %>'s Goals</h1>
+
+<%= link_to "Set New Goal", new_user_goal_url %>
+<br><br>
+<% @goals.each do |goal| %>
+  <h2><%= goal.title %></h2>
+  <p><%= goal.body %></p>
+  <%= button_to  "Remove Goal", "/users/#{current_user.id}/goals/#{goal.id}", method: :delete%>
+<% end %>
