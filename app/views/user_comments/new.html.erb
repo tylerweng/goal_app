@@ -1,0 +1,20 @@
+<h1> Comment on <%= User.find_by(id: params[:user_id]).username %>'s Wall</h1>
+
+<form action="<%= user_user_comments_url  %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token  %>">
+  <input type="hidden" name="user_comment[poster_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="user_comment[postee_id]" value="<%= params[:user_id] %>">
+
+
+
+  <label>
+    Comment
+    <br>
+    <textarea name="user_comment[body]" rows="8" cols="80"></textarea>
+  </label>
+
+  <br>
+
+  <input type="submit" value="Post Comment">
+
+</form>

@@ -1,0 +1,13 @@
+<h1><%= @user.username %>'s Profile</h1>
+
+<h2>Wall</h2>
+<form action="<%= user_user_comments_url(@user) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="user_comment[poster_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="user_comment[postee_id]" value="<%= params[:user_id] %>">
+  <textarea name="user_comment[body]" rows="8" cols="80"></textarea>
+  <input type="submit" value="Post On Wall">
+</form>
+<% @user.postee_user_comments.each do |comment| %>
+  <%= comment.poster.username %>:<%= comment.body %>
+<% end %>

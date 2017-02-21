@@ -17,6 +17,22 @@ class User < ActiveRecord::Base
 
   has_many :goals
 
+  has_many :goal_comments,
+    class_name: :GoalComment,
+    primary_key: :id,
+    foreign_key: :poster_id
+
+  has_many :posted_user_comments,
+    class_name: :UserComment,
+    primary_key: :id,
+    foreign_key: :poster_id
+
+  has_many :postee_user_comments,
+    class_name: :UserComment,
+    primary_key: :id,
+    foreign_key: :postee_id
+  # has_many :comments, as: :commentable
+
   after_initialize :ensure_session_token
 
   attr_reader :password
